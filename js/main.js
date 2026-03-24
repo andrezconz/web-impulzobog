@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const navbarHTML = `
             <div class="container">
                 <a href="#inicio" class="logo">
-                    <img src="logo.PNG" alt="Impulzobog Logo" style="max-height: 48px;">
+                    <img src="assets/img/logo.png" alt="Impulzobog" style="height:40px;">
                 </a>
                 <div class="menu-toggle" id="mobile-menu">
                     ☰
