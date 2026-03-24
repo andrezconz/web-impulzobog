@@ -1,31 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Component Injection (Navbar & Footer)
     const injectComponents = () => {
-        // Find which page is currently active
-        const path = window.location.pathname;
-        const page = path.split("/").pop();
-
-        const getActiveClass = (href) => {
-            if (href === '/' && (page === '' || page === 'index.html')) return 'active';
-            if (page === href) return 'active';
-            return '';
-        };
-
         const navbarHTML = `
             <div class="container">
-                <a href="index.html" class="logo">
-                    🚀 Impulzo<span>bog</span>
+                <a href="#inicio" class="logo">
+                    <img src="logo.PNG" alt="Impulzobog Logo" style="max-height: 48px;">
                 </a>
                 <div class="menu-toggle" id="mobile-menu">
                     ☰
                 </div>
                 <nav class="nav-links" id="nav-links">
-                    <a href="index.html" class="${getActiveClass('index.html')}">Inicio</a>
-                    <a href="nosotros.html" class="${getActiveClass('nosotros.html')}">Nosotros</a>
-                    <a href="programas.html" class="${getActiveClass('programas.html')}">Programas</a>
-                    <a href="eventos.html" class="${getActiveClass('eventos.html')}">Eventos</a>
-                    <a href="comunidad.html" class="${getActiveClass('comunidad.html')}">Comunidad</a>
-                    <a href="contacto.html" class="btn btn-primary">Contacto</a>
+                    <a href="#inicio">Inicio</a>
+                    <a href="#nosotros">Nosotros</a>
+                    <a href="#programas">Productos</a>
+                    <a href="#eventos">Eventos</a>
+                    <a href="#comunidad">Comunidad</a>
+                    <a href="#contacto" class="btn btn-primary">Contacto</a>
                 </nav>
             </div>
         `;
@@ -35,30 +25,28 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="footer-content">
                     <div class="footer-col">
                         <h4>Impulzobog</h4>
-                        <p>Impulsando el ecosistema emprendedor en Bogotá, Colombia. Conectamos, educamos y aceleramos ideas innovadoras.</p>
+                        <p>Impulsando el ecosistema y conectando tus productos con nuevos actores del mercado en Bogotá, Colombia.</p>
                         <div class="social-links">
-                            <a href="#" class="social-icon">FB</a>
-                            <a href="#" class="social-icon">IG</a>
-                            <a href="#" class="social-icon">LI</a>
-                            <a href="#" class="social-icon">TW</a>
+                            <a href="https://instagram.com/impulzobog" target="_blank" class="social-icon" style="width: auto; padding: 0 1rem; border-radius: 20px; text-decoration: none; font-weight: 500;">
+                                📸 @impulzobog
+                            </a>
                         </div>
                     </div>
                     <div class="footer-col">
-                        <h4>Enlaces Rápidos</h4>
+                        <h4>Explorar</h4>
                         <div class="footer-links">
-                            <a href="index.html">Inicio</a>
-                            <a href="nosotros.html">Sobre Nosotros</a>
-                            <a href="programas.html">Programas</a>
-                            <a href="eventos.html">Eventos</a>
-                            <a href="comunidad.html">Comunidad</a>
+                            <a href="#inicio">Inicio</a>
+                            <a href="#nosotros">Sobre Nosotros</a>
+                            <a href="#programas">Nuestros Productos</a>
+                            <a href="#eventos">Eventos</a>
                         </div>
                     </div>
                     <div class="footer-col">
                         <h4>Contacto</h4>
                         <div class="footer-links">
                             <p>📍 Bogotá, Colombia</p>
-                            <p>📧 info@impulzobog.co</p>
-                            <p>📞 +57 (300) 123-4567</p>
+                            <p>📧 comunidad@impulzobog.com</p>
+                            <p>📞 +57 320 338 7148</p>
                         </div>
                     </div>
                 </div>
@@ -86,7 +74,37 @@ document.addEventListener('DOMContentLoaded', () => {
             navLinks.classList.toggle('active');
             mobileMenuBtn.innerHTML = navLinks.classList.contains('active') ? '✕' : '☰';
         });
+
+        // Close mobile menu on anchor link click
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '☰';
+            });
+        });
     }
+
+    // Active state highlighting during horizontal scroll or anchor clicks
+    const sections = document.querySelectorAll('section');
+    const navAnchors = document.querySelectorAll('.nav-links a');
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (scrollY >= (sectionTop - 150)) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navAnchors.forEach(a => {
+            a.classList.remove('active');
+            if (a.getAttribute('href') === `#${current}`) {
+                a.classList.add('active');
+            }
+        });
+    });
 
     // Contact Form Logic
     const contactForm = document.getElementById('contact-form');

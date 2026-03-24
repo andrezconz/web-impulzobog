@@ -13,6 +13,11 @@
   --font-main: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -180,6 +185,7 @@ section {
   margin-bottom: 1.5rem;
   background: linear-gradient(to right, var(--primary), var(--secondary));
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
