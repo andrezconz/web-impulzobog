@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="footer-content">
                     <div class="footer-col">
                         <h4>Asociación Impulzobog</h4>
+                        <p>Una comunidad de emprendedores para emprendedores.</p>
                         <p>NIT 902.015.443-7</p>
                         <p>Sujetos a la inspección y control de la Alcaldía Mayor de Bogotá.</p>
                         <div class="social-links">
