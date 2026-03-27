@@ -11,11 +11,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <nav class="nav-links" id="nav-links">
                     <a href="#inicio">Inicio</a>
-                    <a href="#nosotros">Nosotros</a>
-                    <a href="#programas">Productos</a>
-                    <a href="#eventos">Eventos</a>
-                    <a href="#comunidad">Comunidad</a>
-                    <a href="#contacto" class="btn btn-primary">Contacto</a>
+                    <a href="#impacto">Impacto</a>
+                    <a href="#categorias">Categorías</a>
+                    <a href="#beneficios">Beneficios</a>
+                    <a href="#sumate" class="btn btn-primary">¡Únete ahora!</a>
                 </nav>
             </div>
         `;
@@ -24,34 +23,35 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="container">
                 <div class="footer-content">
                     <div class="footer-col">
-                        <h4>Impulzobog</h4>
-                        <p>Impulsando el ecosistema y conectando tus productos con nuevos actores del mercado en Bogotá, Colombia.</p>
+                        <h4>Asociación Impulzobog</h4>
+                        <p>NIT 902.015.443-7</p>
+                        <p>Sujetos a la inspección y control de la Alcaldía Mayor de Bogotá.</p>
                         <div class="social-links">
-                            <a href="https://instagram.com/impulzobog" target="_blank" class="social-icon" style="width: auto; padding: 0 1rem; border-radius: 20px; text-decoration: none; font-weight: 500;">
-                                📸 @impulzobog
+                            <a href="https://instagram.com/impulzobog" target="_blank" class="social-icon">
+                                📸 Instagram
                             </a>
                         </div>
                     </div>
                     <div class="footer-col">
-                        <h4>Explorar</h4>
+                        <h4>Enlaces</h4>
                         <div class="footer-links">
                             <a href="#inicio">Inicio</a>
-                            <a href="#nosotros">Sobre Nosotros</a>
-                            <a href="#programas">Nuestros Productos</a>
-                            <a href="#eventos">Eventos</a>
+                            <a href="#impacto">Nuestro Impacto</a>
+                            <a href="#categorias">Categorías</a>
+                            <a href="#beneficios">Beneficios</a>
                         </div>
                     </div>
                     <div class="footer-col">
-                        <h4>Contacto</h4>
+                        <h4>Contacto Directo</h4>
                         <div class="footer-links">
+                            <p>📧 COMUNIDAD@IMPULZOBOG.COM</p>
+                            <p>🌐 www.impulzobog.com</p>
                             <p>📍 Bogotá, Colombia</p>
-                            <p>📧 comunidad@impulzobog.com</p>
-                            <p>📞 +57 320 338 7148</p>
                         </div>
                     </div>
                 </div>
                 <div class="footer-bottom">
-                    <p>&copy; ${new Date().getFullYear()} Impulzobog. Todos los derechos reservados.</p>
+                    <p>&copy; ${new Date().getFullYear()} Asociación Impulzobog. Todos los derechos reservados.</p>
                 </div>
             </div>
         `;
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Active state highlighting during horizontal scroll or anchor clicks
+    // Active state highlighting
     const sections = document.querySelectorAll('section');
     const navAnchors = document.querySelectorAll('.nav-links a');
 
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
             const sectionHeight = section.clientHeight;
-            if (scrollY >= (sectionTop - 150)) {
+            if (window.scrollY >= (sectionTop - 150)) {
                 current = section.getAttribute('id');
             }
         });
@@ -106,18 +106,26 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Contact Form Logic
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
+    // Form Logic
+    const associationForm = document.getElementById('association-form');
+    if (associationForm) {
+        associationForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            const messageBox = document.getElementById('form-message');
-            messageBox.className = 'form-message success';
-            messageBox.textContent = '¡Gracias por contactarnos! Tu mensaje ha sido enviado exitosamente.';
-            contactForm.reset();
+            const feedback = document.getElementById('form-feedback');
+
+            // Basic animation for feedback
+            feedback.style.display = 'block';
+            feedback.className = 'form-feedback success';
+            feedback.innerHTML = '¡Gracias por tu interés! Hemos recibido tus datos y nos pondremos en contacto contigo pronto vía WhatsApp.';
+
+            associationForm.reset();
 
             setTimeout(() => {
-                messageBox.style.display = 'none';
+                feedback.style.opacity = '0';
+                setTimeout(() => {
+                    feedback.style.display = 'none';
+                    feedback.style.opacity = '1';
+                }, 500);
             }, 5000);
         });
     }
