@@ -501,51 +501,237 @@ footer {
     color: #166534;
 }
 
-/* Responsive */
+/* =====================
+   Responsive Breakpoints
+   ===================== */
+
+/* Tablet (1024px) */
 @media (max-width: 1024px) {
-  .hero-grid, .benefits-container {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    text-align: center;
+  }
+
+  .hero-content {
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .hero p {
+    margin: 0 auto 2.5rem;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .hero-visual {
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .benefits-container {
     grid-template-columns: 1fr;
     gap: 3rem;
   }
-  
-  .hero-content {
-    text-align: center;
+
+  .benefits-visual {
+    display: none;
   }
-  
-  .hero-buttons {
-    justify-content: center;
-  }
-  
+
   .impact-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
+/* Small Tablet (768px) */
 @media (max-width: 768px) {
+  .hero {
+    padding-top: 110px;
+    padding-bottom: 60px;
+    min-height: unset;
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 7vw, 2.8rem);
+  }
+
+  .section-title {
+    font-size: clamp(1.6rem, 5vw, 2.2rem);
+  }
+
+  .impact-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .impact-card {
+    padding: 2rem;
+  }
+
   .form-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .full-width {
     grid-column: span 1;
   }
-  
+
+  /* Mobile Nav */
   .nav-links {
-    display: none; /* Mobile menu needed */
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    flex-direction: column;
+    padding: 2rem;
+    gap: 1.5rem;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    display: none;
+    z-index: 999;
   }
-  
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links a {
+    font-size: 1.1rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .nav-links a:last-child {
+    border-bottom: none;
+  }
+
+  .menu-toggle {
+    display: block;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    color: var(--dark);
+  }
+
   .footer-content {
     grid-template-columns: 1fr;
+    gap: 2.5rem;
   }
-  
+
   .form-wrapper {
     padding: 2rem;
   }
+
+  /* Portfolio on mobile */
+  .portfolio-section {
+    padding: 60px 0;
+    margin: 0 0.5rem;
+    border-radius: var(--radius-md);
+  }
+
+  .reel-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .reel-message h3 {
+    font-size: 1.4rem;
+  }
+
+  .portfolio-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .portfolio-item {
+    padding: 1rem;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .item-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.4rem;
+  }
+
+  .item-content h4 {
+    font-size: 0.9rem;
+  }
+
+  .item-content p {
+    font-size: 0.8rem;
+  }
+
+  .portfolio-cta {
+    padding: 2.5rem 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .portfolio-cta-content h3 {
+    font-size: 1.4rem;
+  }
+
+  .benefits-container {
+    padding: 2.5rem 1.5rem;
+  }
 }
 
-/* =====================
-   Portfolio Section
-   ===================== */
+/* Mobile (480px) */
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 1.9rem;
+  }
+
+  .btn-lg {
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-buttons .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Keep 2 columns on small phones */
+  .portfolio-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  .portfolio-item {
+    padding: 0.85rem;
+  }
+
+  .item-content h4 {
+    font-size: 0.82rem;
+  }
+
+  .item-content p {
+    font-size: 0.75rem;
+  }
+}
+
+/* Very small phones (360px) */
+@media (max-width: 360px) {
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .portfolio-section {
   padding: 100px 0;
   background: var(--dark);
@@ -641,7 +827,7 @@ footer {
 
 .portfolio-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 1.5rem;
 }
 
@@ -709,23 +895,4 @@ footer {
   margin: 0 auto 2.5rem;
 }
 
-@media (max-width: 900px) {
-  .reel-container {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
-}
 
-@media (max-width: 600px) {
-  .portfolio-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .portfolio-cta {
-    padding: 2.5rem 1.5rem;
-  }
-
-  .portfolio-cta-content h3 {
-    font-size: 1.5rem;
-  }
-}
