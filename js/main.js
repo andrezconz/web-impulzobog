@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <nav class="nav-links" id="nav-links">
                     <a href="#inicio">Inicio</a>
                     <a href="#impacto">Impacto</a>
-                    <a href="#portafolio">Nuestro Portafolio</a>
+                    <a href="#categorias">Categorías</a>
                     <a href="#beneficios">Beneficios</a>
                     <a href="#sumate" class="btn btn-primary">¡Únete ahora!</a>
                 </nav>
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="footer-links">
                             <a href="#inicio">Inicio</a>
                             <a href="#impacto">Nuestro Impacto</a>
-                            <a href="#portafolio">Nuestro Portafolio</a>
+                            <a href="#categorias">Categorías</a>
                             <a href="#beneficios">Beneficios</a>
                         </div>
                     </div>
